@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GarbhSakhi - Online Garbh Sanskar Classes</title>
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #9d174d;
+      --secondary: #be185d;
+      --accent: #d97706;
+      --surface: #ffffff;
+      --bg: #fff1f2;
+      --text: #1e293b;
+      --muted: #64748b;
+      --line: #ffe4e6;
+      --whatsapp: #25d366;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 10px 6px 80px;
+    }
+
+    .card-shell {
+      width: 100%;
+      max-width: 440px;
+      background: var(--surface);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    /* Hero / Profile Section */
+    .hero {
+      background: linear-gradient(135deg, #831843 0%, #9d174d 50%, #db2777 100%);
+      color: #fff;
+      text-align: center;
+      padding: 26px 20px 24px;
+      position: relative;
+    }
+    .views-counter {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 3px 10px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+    }
+    .avatar-wrap {
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 4px solid #ffffff;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 4px;
+    }
+    .hero h1 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .hero .role {
+      font-size: 13px;
+      opacity: 0.95;
+      margin-top: 4px;
+      letter-spacing: 0.3px;
+    }
+    .hero .sub-role {
+      font-size: 11.5px;
+      opacity: 0.85;
+      margin-top: 2px;
+    }
+
+    /* Quick Action Row */
+    .quick-bar {
+      display: flex;
+      justify-content: space-around;
+      padding: 14px 20px;
+      background: #ffffff;
+      border-bottom: 8px solid var(--line);
+    }
+    .quick-btn {
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .quick-btn .icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+    .quick-btn:hover .icon-circle {
+      transform: scale(1.05);
+    }
+    .btn-call { background: #9d174d; }
+    .btn-wa   { background: var(--whatsapp); }
+    .btn-dir  { background: #b45309; }
+
+    /* Section Styling */
+    .section {
+      padding: 20px 18px;
+      border-bottom: 8px solid var(--line);
+    }
+    .section-header {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #ffe4e6;
+    }
+    .section-header::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 48px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    /* Contact Details */
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .info-row i {
+      color: var(--primary);
+      width: 18px;
+      text-align: center;
+      margin-top: 2px;
+      font-size: 15px;
+    }
+
+    /* Action Buttons Row */
+    .vcard-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .vcard-action {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #fff;
+      background: var(--primary);
+      cursor: pointer;
+      border: none;
+    }
+    .vcard-action.btn-wa-share {
+      background: var(--whatsapp);
+    }
+
+    /* Direct Links Tile */
+    .link-tile {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #fbcfe8;
+      border-radius: 10px;
+      padding: 10px 14px;
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.2s;
+      margin-bottom: 10px;
+    }
+    .link-tile:hover {
+      background: #fdf2f8;
+    }
+    .link-tile-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .link-tile-left i {
+      font-size: 22px;
+    }
+    .link-tile-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .link-tile-desc {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* PDF Brochure Download Card */
+    .pdf-card {
+      background: linear-gradient(135deg, #fff1f2 0%, #fce7f3 100%);
+      border: 1.5px dashed #f43f5e;
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .pdf-card-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .pdf-card-info i {
+      font-size: 32px;
+      color: #e11d48;
+    }
+    .pdf-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #881337;
+    }
+    .pdf-card-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .pdf-download-btn {
+      background: #e11d48;
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Specialties Pill Grid */
+    .pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .pill {
+      background: #fdf2f8;
+      color: var(--primary);
+      border: 1px solid #fbcfe8;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* Curriculum & Service Cards */
+    .product-card {
+      border: 1px solid #fbcfe8;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .product-body {
+      padding: 14px;
+    }
+    .product-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .product-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .product-banner-svg {
+      width: 100%;
+      height: 175px;
+      border-radius: 10px;
+      display: block;
+      margin-bottom: 12px;
+      box-shadow: 0 3px 10px rgba(157, 23, 77, 0.12);
+    }
+    .enquiry-btn {
+      display: inline-block;
+      background: var(--whatsapp);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 20px;
+      text-decoration: none;
+    }
+
+    /* 10 Photo Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .gallery-item {
+      aspect-ratio: 1 / 1;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #fbcfe8;
+      background: #fdf2f8;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 5 Video Showcase Grid */
+    .video-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 10px;
+    }
+    .video-card {
+      border: 1px solid #fbcfe8;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .video-card video {
+      width: 100%;
+      display: block;
+      background: #000;
+      border-bottom: 1px solid #ffe4e6;
+    }
+    .video-card-body {
+      padding: 10px 12px;
+    }
+    .video-card-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .video-card-desc {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.92);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .lightbox-content {
+      max-width: 92%;
+      max-height: 85vh;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      color: #ffffff;
+      font-size: 34px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* StaticForms Form */
+    .inquiry-form input,
+    .inquiry-form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 13px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      outline: none;
+    }
+    .inquiry-form input:focus,
+    .inquiry-form textarea:focus {
+      border-color: var(--primary);
+    }
+    .inquiry-form button {
+      width: 100%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 11px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    /* Share Section */
+    .share-box {
+      border: 1px dashed #f472b6;
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+      background: #fdf2f8;
+    }
+    .qr-img {
+      width: 140px;
+      height: 140px;
+      margin: 10px auto;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid #fbcfe8;
+      padding: 4px;
+      background: #fff;
+    }
+    .share-direct-wrap {
+      margin-top: 16px;
+      text-align: left;
+    }
+    .share-direct-wrap label {
+      font-size: 11.5px;
+      color: var(--muted);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .share-input-group {
+      display: flex;
+      gap: 6px;
+    }
+    .share-input-group input {
+      flex: 1;
+      padding: 8px 10px;
+      font-size: 12.5px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      outline: none;
+    }
+    .share-input-group button {
+      background: var(--whatsapp);
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Bottom Floating Navigation */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 440px;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0 10px;
+      box-shadow: 0 -3px 12px rgba(0,0,0,0.08);
+      z-index: 999;
+      border-top: 1px solid #ffe4e6;
+    }
+    .bottom-tab {
+      text-decoration: none;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      font-size: 9.5px;
+      font-weight: 600;
+    }
+    .bottom-tab i {
+      font-size: 16px;
+    }
+    .bottom-tab:hover, .bottom-tab.active {
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-shell">
+
+    <!-- HOME / PROFILE SECTION -->
+    <div class="hero" id="home">
+      <div class="views-counter"><i class="fa-solid fa-eye"></i> Views: <b>1,240</b></div>
+      <div class="avatar-wrap">
+        <img src="logo.png" alt="GarbhSakhi Logo" onerror="handleImgError(this, ['logo.jpeg', 'logo.jpg', 'Logo.png'])">
+      </div>
+      <h1>GarbhSakhi</h1>
+      <div class="role">Online Garbh Sanskar Classes</div>
+      <div class="sub-role">संस्कारांची सुंदर सुरुवात... एका नव्या आयुष्यासाठी</div>
+    </div>
+
+    <!-- QUICK CALL/WHATSAPP/LOCATION BAR -->
+    <div class="quick-bar">
+      <a href="tel:+919021666008" class="quick-btn">
+        <div class="icon-circle btn-call"><i class="fa-solid fa-phone"></i></div>
+        Call
+      </a>
+      <a href="https://wa.me/919021666008?text=Hello%20GarbhSakhi,%20I%20saw%20your%20digital%20card.%20I%20want%20to%20know%20more%20about%20Online%20Garbh%20Sanskar%20Classes." target="_blank" class="quick-btn">
+        <div class="icon-circle btn-wa"><i class="fa-brands fa-whatsapp"></i></div>
+        WhatsApp
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Kolhapur" target="_blank" class="quick-btn">
+        <div class="icon-circle btn-dir"><i class="fa-solid fa-location-dot"></i></div>
+        Direction
+      </a>
+    </div>
+
+    <!-- CONTACT DETAILS & ACTIONS -->
+    <div class="section">
+      <div class="info-list">
+        <a href="https://www.google.com/maps/search/?api=1&query=Kolhapur" target="_blank" class="info-row">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Kolhapur, Maharashtra, India</span>
+        </a>
+        <a href="tel:+919021666008" class="info-row">
+          <i class="fa-solid fa-phone"></i>
+          <span>+91-9021666008</span>
+        </a>
+        <div class="info-row">
+          <i class="fa-solid fa-laptop"></i>
+          <span>100% Online Interactive Live Sessions</span>
+        </div>
+      </div>
+
+      <div class="vcard-row">
+        <a href="javascript:void(0)" onclick="downloadVCard()" class="vcard-action">
+          <i class="fa-solid fa-address-book"></i> Add to Contacts
+        </a>
+        <a href="javascript:void(0)" onclick="shareOnWhatsApp()" class="vcard-action btn-wa-share">
+          <i class="fa-brands fa-whatsapp"></i> Share Card
+        </a>
+      </div>
+    </div>
+
+    <!-- BROCHURE & DIRECT LINKS SECTION -->
+    <div class="section" id="links">
+      <div class="section-header">Brochure & Quick Links</div>
+
+      <!-- PDF Download Card -->
+      <div class="pdf-card">
+        <div class="pdf-card-info">
+          <i class="fa-solid fa-file-pdf"></i>
+          <div>
+            <div class="pdf-card-title">GarbhSakhi Official Brochure</div>
+            <div class="pdf-card-sub">Curriculum, benefits & batch details (PDF)</div>
+          </div>
+        </div>
+        <a href="Garbhsakhi_Broucher.pdf" download="Garbhsakhi_Brochure.pdf" class="pdf-download-btn">
+          <i class="fa-solid fa-download"></i> Download
+        </a>
+      </div>
+
+      <div style="margin-top: 12px;">
+        <a href="https://wa.me/919021666008?text=Hello,%20I%20would%20like%20to%20register%20for%20the%20upcoming%20Garbh%20Sanskar%20batch." target="_blank" class="link-tile">
+          <div class="link-tile-left">
+            <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp);"></i>
+            <div>
+              <div class="link-tile-title">WhatsApp Enrollment</div>
+              <div class="link-tile-desc">Register for new online batch schedule</div>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right" style="color:#f472b6; font-size: 13px;"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- ABOUT US SECTION -->
+    <div class="section" id="about">
+      <div class="section-header">About GarbhSakhi</div>
+      <p style="font-size: 13px; color: #475569; line-height: 1.6;">
+        Welcome to <strong>GarbhSakhi Online Garbh Sanskar Classes</strong>. We offer guided scientific and traditional Garbh Sanskar practices designed to foster stress-free pregnancy, emotional bonding with your unborn child, and holistic child development right from your home.
+      </p>
+
+      <div class="section-header" style="margin-top: 18px; font-size: 13.5px; border-bottom: none; padding-bottom: 0;">Our Offerings</div>
+      <div class="pill-grid">
+        <div class="pill">प्राणायाम व ध्यान 🧘‍♀️</div>
+        <div class="pill">मंत्र व संगीत थेरपी 🎵</div>
+        <div class="pill">संस्कार कथा व वाचन 📖</div>
+        <div class="pill">गर्भ संवाद (Mother-Baby Bonding) 👶</div>
+        <div class="pill">सात्त्विक आहार व जीवनशैली 🥗</div>
+      </div>
+    </div>
+
+    <!-- MODULES / SESSIONS SECTION -->
+    <div class="section" id="services">
+      <div class="section-header">Class Modules</div>
+
+      <!-- Module 1: Yoga & Meditation -->
+      <div class="product-card">
+        <div class="product-body">
+          <div class="product-title">🧘‍♀️ प्राणायाम, ध्यान व सौम्य योग</div>
+          <div class="product-desc">Safe prenatal breathing exercises, guided relaxation meditation, and gentle movement tailored for mental tranquility and stress-free pregnancy.</div>
+          
+          <svg class="product-banner-svg" viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="gGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4a041f" />
+                <stop offset="50%" stop-color="#831843" />
+                <stop offset="100%" stop-color="#9d174d" />
+              </linearGradient>
+              <linearGradient id="goldG1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fef08a" />
+                <stop offset="50%" stop-color="#f59e0b" />
+                <stop offset="100%" stop-color="#d97706" />
+              </linearGradient>
+            </defs>
+            <rect width="500" height="240" rx="14" fill="url(#gGrad1)" />
+            <rect x="12" y="12" width="476" height="216" rx="10" fill="none" stroke="url(#goldG1)" stroke-width="2" stroke-dasharray="6,4" opacity="0.75" />
+            <rect x="22" y="22" width="456" height="196" rx="8" fill="rgba(0,0,0,0.2)" stroke="url(#goldG1)" stroke-width="1" />
+            
+            <g transform="translate(60, 68)" stroke="url(#goldG1)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="25" cy="10" r="10"/>
+              <path d="M5 65 C 10 40, 40 40, 45 65"/>
+              <path d="M0 75 Q 25 90 50 75"/>
+              <path d="M12 48 L-5 60"/>
+              <path d="M38 48 L55 60"/>
+            </g>
+
+            <text x="135" y="85" fill="#fef08a" font-family="'Inter', sans-serif" font-size="13" font-weight="700" letter-spacing="2.5">GARBHSAKHI ONLINE</text>
+            <text x="135" y="120" fill="#ffffff" font-family="'Inter', sans-serif" font-size="20" font-weight="800">YOGA & MEDITATION</text>
+            <text x="135" y="148" fill="#fce7f3" font-family="'Inter', sans-serif" font-size="12.5" opacity="0.9">Pranayama • Stress Relief • Guided Dhyaan</text>
+            
+            <rect x="135" y="165" width="165" height="24" rx="12" fill="url(#goldG1)" />
+            <text x="217" y="181" fill="#4a041f" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" text-anchor="middle">LIVE INTERACTIVE</text>
+          </svg>
+          
+          <a href="https://wa.me/919021666008?text=Hi,%20I%20am%20interested%20in%20the%20Yoga%20&%20Meditation%20sessions." target="_blank" class="enquiry-btn">Inquire on WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Module 2: Music Therapy & Vedic Chanting -->
+      <div class="product-card">
+        <div class="product-body">
+          <div class="product-title">🎵 मंत्र व संगीत थेरपी (Sound Therapy)</div>
+          <div class="product-desc">Harmonious classical ragas, Vedic chanting, and sound therapy scientifically created to boost baby's neurodevelopment and soothe maternal emotions.</div>
+          
+          <svg class="product-banner-svg" viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="gGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3b0764" />
+                <stop offset="50%" stop-color="#701a75" />
+                <stop offset="100%" stop-color="#9d174d" />
+              </linearGradient>
+            </defs>
+            <rect width="500" height="240" rx="14" fill="url(#gGrad2)" />
+            <rect x="12" y="12" width="476" height="216" rx="10" fill="none" stroke="url(#goldG1)" stroke-width="2" stroke-dasharray="6,4" opacity="0.75" />
+            <rect x="22" y="22" width="456" height="196" rx="8" fill="rgba(0,0,0,0.2)" stroke="url(#goldG1)" stroke-width="1" />
+            
+            <g transform="translate(60, 68)" stroke="url(#goldG1)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 70 A 20 20 0 0 1 50 70"/>
+              <circle cx="10" cy="70" r="8" fill="url(#goldG1)"/>
+              <circle cx="50" cy="70" r="8" fill="url(#goldG1)"/>
+              <path d="M25 25 L25 5"/>
+              <path d="M25 5 C 35 5 45 15 45 25"/>
+            </g>
+
+            <text x="135" y="85" fill="#fef08a" font-family="'Inter', sans-serif" font-size="13" font-weight="700" letter-spacing="2.5">GARBHSAKHI ONLINE</text>
+            <text x="135" y="120" fill="#ffffff" font-family="'Inter', sans-serif" font-size="20" font-weight="800">MUSIC & MANTRA THERAPY</text>
+            <text x="135" y="148" fill="#fce7f3" font-family="'Inter', sans-serif" font-size="12.5" opacity="0.9">Classical Ragas • Vedic Mantras • IQ Waves</text>
+            
+            <rect x="135" y="165" width="165" height="24" rx="12" fill="url(#goldG1)" />
+            <text x="217" y="181" fill="#4a041f" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" text-anchor="middle">SOOTHING FREQUENCIES</text>
+          </svg>
+          
+          <a href="https://wa.me/919021666008?text=Hi,%20I%20am%20interested%20in%20Mantra%20&%20Music%20Therapy%20sessions." target="_blank" class="enquiry-btn">Inquire on WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Module 3: Garbh Samvad & Bonding -->
+      <div class="product-card">
+        <div class="product-body">
+          <div class="product-title">✨ गर्भ संवाद व सकारात्मक संस्कार</div>
+          <div class="product-desc">Learn the sacred technique of Garbh Samvad to build an unbreakable emotional connection with your baby and instill positive subconscious values.</div>
+          
+          <svg class="product-banner-svg" viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="gGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#831843" />
+                <stop offset="50%" stop-color="#be185d" />
+                <stop offset="100%" stop-color="#b45309" />
+              </linearGradient>
+            </defs>
+            <rect width="500" height="240" rx="14" fill="url(#gGrad3)" />
+            <rect x="12" y="12" width="476" height="216" rx="10" fill="none" stroke="url(#goldG1)" stroke-width="2" stroke-dasharray="6,4" opacity="0.75" />
+            <rect x="22" y="22" width="456" height="196" rx="8" fill="rgba(0,0,0,0.2)" stroke="url(#goldG1)" stroke-width="1" />
+            
+            <g transform="translate(60, 68)" stroke="url(#goldG1)" stroke-width="2" fill="none">
+              <circle cx="30" cy="45" r="28"/>
+              <path d="M30 25 C 20 25 18 35 25 45 C 32 55 35 60 30 65" stroke-width="2.5"/>
+              <circle cx="30" cy="20" r="4" fill="url(#goldG1)"/>
+            </g>
+
+            <text x="135" y="85" fill="#fef08a" font-family="'Inter', sans-serif" font-size="13" font-weight="700" letter-spacing="2.5">GARBHSAKHI ONLINE</text>
+            <text x="135" y="120" fill="#ffffff" font-family="'Inter', sans-serif" font-size="20" font-weight="800">GARBH SAMVAD & BONDING</text>
+            <text x="135" y="148" fill="#fce7f3" font-family="'Inter', sans-serif" font-size="12.5" opacity="0.9">Emotional IQ • Moral Stories • Positive Thoughts</text>
+            
+            <rect x="135" y="165" width="165" height="24" rx="12" fill="url(#goldG1)" />
+            <text x="217" y="181" fill="#4a041f" font-family="'Inter', sans-serif" font-size="10.5" font-weight="700" text-anchor="middle">PARENT BONDING</text>
+          </svg>
+          
+          <a href="https://wa.me/919021666008?text=Hi,%20I%20am%20interested%20in%20Garbh%20Samvad%20sessions." target="_blank" class="enquiry-btn">Inquire on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 PHOTOS WORK GALLERY SECTION -->
+    <div class="section" id="gallery">
+      <div class="section-header">Photo Gallery (10 Photos)</div>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox('photo1.jpg')"><img src="photo1.jpg" alt="Photo 1" loading="lazy" onerror="handleImgError(this, ['photo1.jpeg', 'photo1.png', 'photo1.JPG'])"></div>
+        <div class="gallery-item" onclick="openLightbox('photo2.jpg')"><img src="photo2.jpg" alt="Photo 2" loading="lazy" onerror="handleImgError(this, ['photo2.jpeg', 'photo2.png', 'photo2.JPG'])"></div>
+        <div class="gallery-item" onclick="openLightbox('photo3.jpg')"><img src="photo3.jpg" alt="Photo 3" loading="lazy" onerror="handleImgError(this, ['photo3.jpeg', 'photo3.png', 'photo3.JPG'])"></div>
+        <div class="gallery-item" onclick="openLightbox('photo4.jpg')"><img src="photo4.jpg" alt="Photo 4" loading="lazy" onerror="handleImgError(this, ['photo4.jpeg', 'photo4.png', 'photo4.JPG'])"></div>
+        <div class="gallery-item" onclick="openLightbox('photo5.jpg')"><img src="photo5.jpg" alt="Photo 5" loading="lazy" onerror="handleImgError(this, ['photo5.jpeg', 'photo5.png', 'photo5.JPG'])"></div>
+        <div class="gallery-item" onclick="openLightbox('photo6.jpg')"><img src="photo6.jpg" alt="Photo 6" loading="lazy" onerror="handleImgError(this, ['photo6.jpeg', 'photo6.png', 'photo6.JPG'])"></div>
+        <div class="gallery-item" onclick="openLightbox('photo7.jpg')"><img src="photo7.jpg" alt="Photo 7" loading="lazy" onerror="handleImgError(this, ['photo7.jpeg', 'photo7.png', 'photo7.JPG'])"></div>
+        <div class="gallery-item" onclick="openLightbox('photo8.jpg')"><img src="photo8.jpg" alt="Photo 8" loading="lazy" onerror="handleImgError(this, ['photo8.jpeg', 'photo8.png', 'photo8.JPG'])"></div>
+        <div class="gallery-item" onclick="openLightbox('photo9.jpg')"><img src="photo9.jpg" alt="Photo 9" loading="lazy" onerror="handleImgError(this, ['photo9.jpeg', 'photo9.png', 'photo9.JPG'])"></div>
+        <div class="gallery-item" onclick="openLightbox('photo10.jpg')"><img src="photo10.jpg" alt="Photo 10" loading="lazy" onerror="handleImgError(this, ['photo10.jpeg', 'photo10.png', 'photo10.JPG'])"></div>
+      </div>
+    </div>
+
+    <!-- 5 VIDEOS SECTION -->
+    <div class="section" id="videos">
+      <div class="section-header">Video Highlights (5 Videos)</div>
+      <div class="video-grid">
+        <!-- Video 1 -->
+        <div class="video-card">
+          <video controls preload="metadata" poster="photo1.jpg">
+            <source src="video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-card-body">
+            <div class="video-card-title">1. Introduction to Garbh Sanskar</div>
+            <div class="video-card-desc">Understanding the scientific and holistic foundation.</div>
+          </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="video-card">
+          <video controls preload="metadata" poster="photo2.jpg">
+            <source src="video2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-card-body">
+            <div class="video-card-title">2. Guided Meditation & Breathing Session</div>
+            <div class="video-card-desc">Calm your nerves and recharge during pregnancy.</div>
+          </div>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="video-card">
+          <video controls preload="metadata" poster="photo3.jpg">
+            <source src="video3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-card-body">
+            <div class="video-card-title">3. Healing Music & Frequency Notes</div>
+            <div class="video-card-desc">Experience relaxing sound patterns for mother and child.</div>
+          </div>
+        </div>
+
+        <!-- Video 4 -->
+        <div class="video-card">
+          <video controls preload="metadata" poster="photo4.jpg">
+            <source src="video4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-card-body">
+            <div class="video-card-title">4. Garbh Samvad Interactive Practice</div>
+            <div class="video-card-desc">Step-by-step techniques to communicate with your baby.</div>
+          </div>
+        </div>
+
+        <!-- Video 5 -->
+        <div class="video-card">
+          <video controls preload="metadata" poster="photo5.jpg">
+            <source src="video5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-card-body">
+            <div class="video-card-title">5. Client Experiences & Testimonials</div>
+            <div class="video-card-desc">Hear how expectant mothers benefited from the class.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INQUIRY FORM (StaticForms Integration) -->
+    <div class="section" id="enquiry">
+      <div class="section-header">Join / Inquire Now</div>
+      <form action="https://api.staticforms.xyz/submit" method="POST" class="inquiry-form">
+        <input type="hidden" name="apiKey" value="sf_f60b608f03e7b8fb2258fe0c">
+        <input type="text" name="honeypot" style="display:none">
+        
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="tel" name="phone" placeholder="Phone / WhatsApp Number" required>
+        <textarea name="message" rows="3" placeholder="Pregnancy month / Questions for the batch..." required></textarea>
+        <button type="submit">Submit Inquiry</button>
+      </form>
+    </div>
+
+    <!-- SHARE SECTION WITH HD PRINT BUTTON -->
+    <div class="section" id="share" style="border-bottom: none;">
+      <div class="section-header">Share Profile</div>
+      <div class="share-box">
+        <p style="font-size: 12px; color: var(--muted); margin-bottom: 6px;">Scan to open profile & brochure:</p>
+        <img id="qrCode" class="qr-img" src="" alt="GarbhSakhi QR Code">
+        
+        <div style="margin: 8px 0 12px;">
+          <a href="javascript:void(0)" onclick="downloadHDQR()" style="display: inline-block; background: var(--primary); color: #fff; padding: 7px 16px; border-radius: 6px; font-size: 11.5px; font-weight: 600; text-decoration: none;">
+            <i class="fa-solid fa-download"></i> Download QR for Print
+          </a>
+        </div>
+
+        <div class="share-direct-wrap">
+          <label>Share profile to any WhatsApp number:</label>
+          <div class="share-input-group">
+            <input type="tel" id="targetPhone" placeholder="Enter 10-digit mobile number">
+            <button onclick="sendToNumber()"><i class="fa-brands fa-whatsapp"></i> Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="text-align: center; padding: 20px; font-size: 11.5px; color: #94a3b8; background: #fafafa; border-top: 1px solid #ffe4e6;">
+      © 2026 GarbhSakhi. All Rights Reserved.
+    </div>
+
+  </div>
+
+  <!-- FLOATING BOTTOM NAVIGATION -->
+  <nav class="bottom-bar">
+    <a href="#home" class="bottom-tab active">
+      <i class="fa-solid fa-house"></i>
+      <span>HOME</span>
+    </a>
+    <a href="#about" class="bottom-tab">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>ABOUT</span>
+    </a>
+    <a href="#services" class="bottom-tab">
+      <i class="fa-solid fa-om"></i>
+      <span>MODULES</span>
+    </a>
+    <a href="#gallery" class="bottom-tab">
+      <i class="fa-solid fa-images"></i>
+      <span>GALLERY</span>
+    </a>
+    <a href="#videos" class="bottom-tab">
+      <i class="fa-solid fa-video"></i>
+      <span>VIDEOS</span>
+    </a>
+    <a href="#enquiry" class="bottom-tab">
+      <i class="fa-solid fa-envelope"></i>
+      <span>ENQUIRY</span>
+    </a>
+    <a href="#share" class="bottom-tab">
+      <i class="fa-solid fa-share-nodes"></i>
+      <span>SHARE</span>
+    </a>
+  </nav>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" class="lightbox-content" src="" alt="Enlarged View" onclick="event.stopPropagation()">
+  </div>
+
+  <script>
+    // Fallback loader for images
+    function handleImgError(img, fallbacks) {
+      if (!img.dataset.tryIndex) {
+        img.dataset.tryIndex = "0";
+      }
+      let idx = parseInt(img.dataset.tryIndex);
+      if (idx < fallbacks.length) {
+        img.dataset.tryIndex = (idx + 1).toString();
+        img.src = fallbacks[idx];
+      } else {
+        img.onerror = null;
+      }
+    }
+
+    // Set dynamic QR code to current live URL
+    document.addEventListener("DOMContentLoaded", () => {
+      const currentUrl = window.location.href;
+      document.getElementById("qrCode").src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(currentUrl)}`;
+    });
+
+    // Lightbox Controls
+    function openLightbox(imageSrc) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = imageSrc;
+      lightbox.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+
+    // WhatsApp Share Button
+    function shareOnWhatsApp() {
+      const currentUrl = window.location.href;
+      const message = `Check out *GarbhSakhi* - Online Garbh Sanskar Classes:\n\n${currentUrl}`;
+      const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Direct Share to 10-Digit Number
+    function sendToNumber() {
+      let phone = document.getElementById('targetPhone').value.trim().replace(/\D/g, '');
+      if (!phone) {
+        alert('Please enter a valid phone number');
+        return;
+      }
+      if (phone.length === 10) {
+        phone = '91' + phone;
+      }
+      const currentUrl = window.location.href;
+      const message = `Hello, check out the digital profile and curriculum of *GarbhSakhi* (Online Garbh Sanskar Classes):\n\n${currentUrl}`;
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    // Download High-Resolution QR (1000x1000 px) for printing
+    function downloadHDQR() {
+      const currentUrl = window.location.href;
+      const hdQrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=${encodeURIComponent(currentUrl)}`;
+      
+      fetch(hdQrUrl)
+        .then(response => response.blob())
+        .then(blob => {
+          const blobUrl = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = blobUrl;
+          link.download = 'GarbhSakhi_QR_Print.png';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        })
+        .catch(() => {
+          window.open(hdQrUrl, '_blank');
+        });
+    }
+
+    // Native vCard Contact File Generator
+    function downloadVCard() {
+      const vcardData = 
+`BEGIN:VCARD
+VERSION:3.0
+FN:GarbhSakhi Online Garbh Sanskar
+ORG:GarbhSakhi
+TITLE:Online Garbh Sanskar Classes
+TEL;TYPE=CELL,VOICE:+919021666008
+ADR;TYPE=WORK:;;Kolhapur;Maharashtra;;India
+EMAIL:
+END:VCARD`;
+
+      const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'GarbhSakhi.vcf');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+
+</body>
+</html>
